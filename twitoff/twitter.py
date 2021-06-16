@@ -48,8 +48,9 @@ def add_or_update_user(username):
             This loop vectorizes tweets
             """
             tweet_vector = vectorize_tweet(tweet["full_text"])
-            db_tweet = Tweet(
-                id=tweet["id"], text=tweet["full_text"], vect=tweet_vector)
+            tweet_id = tweet["id"]
+            db_tweet = (Tweet.query.get(tweet_id) | Tweet(
+                id=tweet["id"], text=tweet["full_text"], vect=tweet_vector))
             db_user.tweets.append(db_tweet)
             DB.session.add(db_tweet)
 
