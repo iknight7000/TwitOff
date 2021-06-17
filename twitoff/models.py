@@ -22,7 +22,7 @@ class Tweet(DB.Model):
     # id column (integer values, primary key)
     id = DB.Column(DB.BigInteger, primary_key=True)
     # text column (unicode values up to 300)
-    text = DB.Column(DB.Unicode(300))
+    text = DB.Column(DB.UnicodeText())
     # vector column (holds python objects, that are serialized)
     vect = DB.Column(DB.PickleType, nullable=False)
     # user id column (integer values) ()
